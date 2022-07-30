@@ -1,3 +1,4 @@
+import pygame
 from constans import RED, WHITE, SQUARE_SIZE, GREY
 
 class Piece:
