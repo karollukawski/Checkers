@@ -26,6 +26,9 @@ class Board:
                 self.white_kings += 1
             else:
                 self.red_kings += 1
+
+    def get_piece(self, row, col):
+        return self.board[row][col]
                 
     def create_board(self):
         for row in range(ROWS):
