@@ -1,5 +1,5 @@
 import pygame
-from checkers.constans import WIDTH, HEIGHT
+from checkers.constans import SQUARE_SIZE, WIDTH, HEIGHT
 from checkers.board import Board
 
 FPS = 60
@@ -7,6 +7,11 @@ FPS = 60
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Checkers')
 
+def get_row_col_from_mouse(pos):
+    x, y = pos
+    row = y // SQUARE_SIZE
+    col = x // SQUARE_SIZE
+    return row, col
 
 def main():
     run = True
