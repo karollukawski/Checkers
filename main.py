@@ -13,6 +13,8 @@ def main():
     clock = pygame.time.Clock()
     board = Board()
 
+    board.move()
+
     while run:
         clock.tick(FPS)
         
