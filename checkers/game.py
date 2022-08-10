@@ -9,3 +9,7 @@ class Game:
         self.turn = RED
         self.valid_moves = {}
         self.win = win
+
+    def update(self):
+        self.board.draw()
+        pygame.display.update()
