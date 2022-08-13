@@ -57,3 +57,15 @@ class Board:
         left = piece.col - 1
         right = piece.col + 1
         row = piece.row
+        
+        if piece.color == RED or piece.king:
+            pass
+
+        if piece.color == WHITE or piece.king:
+            pass
+
+    def _traverse_left(self):
+        pass
+
+    def _traverse_right(self):
+        pass
