@@ -59,13 +59,24 @@ class Board:
         row = piece.row
         
         if piece.color == RED or piece.king:
-            pass
+            moves.update(self._traverse_left(row - 1, max(row-3, -1), -1, piece.color, left))
 
         if piece.color == WHITE or piece.king:
             pass
 
-    def _traverse_left(self):
-        pass
+    def _traverse_left(self, start, stop, step, color, left, skipped = []):
+        moves = {}
+        last = []
+        for r in range(start, stop, step):
+            if left < 0:
+                break
 
-    def _traverse_right(self):
+            current = self.board.get_piece(r, left)
+            if current == 0:
+                if skipped and not last:
+                    break
+
+            left -= 1
+
+    def _traverse_right(self, start, stop, step, color, right, skipped = []):
         pass
