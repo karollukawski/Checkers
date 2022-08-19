@@ -79,7 +79,20 @@ class Board:
             if current == 0:
                 if skipped and not last:
                     break
+                elif skip_only:
+                    pass
+                else:
+                    moves[(r,left)] = last
 
+                if last:
+                    if step == -1:
+                        row = max(r-3, 0)
+                    else:
+                        row = min(r+r, ROWS)
+            elif current.color == color:
+                break
+            else:
+                last = [current]
             left -= 1
 
     def _traverse_right(self, start, stop, step, color, right, skipped = []):
