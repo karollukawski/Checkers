@@ -79,8 +79,8 @@ class Board:
             if current == 0:
                 if skipped and not last:
                     break
-                elif skip_only:
-                    pass
+                elif skipped:
+                    moves[(r, left)] = last + skipped
                 else:
                     moves[(r,left)] = last
 
@@ -88,7 +88,11 @@ class Board:
                     if step == -1:
                         row = max(r-3, 0)
                     else:
-                        row = min(r+r, ROWS)
+                        row = min(r+3, ROWS)
+
+                    moves.update(self._traverse_left(r+step, row, step, color, left-1, skipped = last))
+                    moves.update(self._traverse_right(r+step, row, step, color, left+1, skipped = last))
+                    break
             elif current.color == color:
                 break
             else:
