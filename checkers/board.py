@@ -99,5 +99,37 @@ class Board:
                 last = [current]
             left -= 1
 
+        return moves
+        
     def _traverse_right(self, start, stop, step, color, right, skipped = []):
-        pass
+        moves = {}
+        last = []
+        for r in range(start, stop, step):
+            if right >= COLS:
+                break
+
+            current = self.board.get_piece(r, right)
+            if current == 0:
+                if skipped and not last:
+                    break
+                elif skipped:
+                    moves[(r, right)] = last + skipped
+                else:
+                    moves[(r,right)] = last
+
+                if last:
+                    if step == -1:
+                        row = max(r-3, 0)
+                    else:
+                        row = min(r+3, ROWS)
+
+                    moves.update(self._traverse_left(r+step, row, step, color, right-1, skipped = last))
+                    moves.update(self._traverse_right(r+step, row, step, color, right+1, skipped = last))
+                    break
+            elif current.color == color:
+                break
+            else:
+                last = [current]
+            right += 1
+
+        return moves
