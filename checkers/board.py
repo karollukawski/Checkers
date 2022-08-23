@@ -75,7 +75,7 @@ class Board:
             if left < 0:
                 break
 
-            current = self.board.get_piece(r, left)
+            current = self.board[r][left]
             if current == 0:
                 if skipped and not last:
                     break
@@ -108,7 +108,7 @@ class Board:
             if right >= COLS:
                 break
 
-            current = self.board.get_piece(r, right)
+            current = self.board[r][right]
             if current == 0:
                 if skipped and not last:
                     break
