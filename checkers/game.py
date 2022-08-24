@@ -1,5 +1,5 @@
 import pygame
-from .constans import RED, WHITE
+from .constans import RED, SQUARE_SIZE, WHITE, BLUE
 from .board import Board
 
 class Game:
@@ -45,6 +45,11 @@ class Game:
         
         return True
 
+    def draw_valid_moves(self,moves):
+        for move in moves:
+            row, col = move
+            pygame.draw.cirlce(self.win, BLUE, (row*SQUARE_SIZE - SQUARE_SIZE//2, col*SQUARE_SIZE - SQUARE_SIZE//2), 15)
+    
     def change_turn(self):
         if self.turn == RED:
             self.turn = WHITE
