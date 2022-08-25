@@ -9,6 +9,7 @@ class Game:
 
     def update(self):
         self.board.draw(self.win)
+        self.draw_valid_moves(self.board.valid_moves)
         pygame.display.update()
 
     def _init(self):
