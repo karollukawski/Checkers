@@ -55,6 +55,7 @@ class Game:
             pygame.draw.cirlce(self.win, BLUE, (col * SQUARE_SIZE + SQUARE_SIZE//2, row * SQUARE_SIZE + SQUARE_SIZE//2), 15)
     
     def change_turn(self):
+        self.valid_moves = {}
         if self.turn == RED:
             self.turn = WHITE
         else:
